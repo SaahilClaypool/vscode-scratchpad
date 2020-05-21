@@ -1,8 +1,11 @@
 {
     "name": "scratchpadmd",
+    "repository": {
+        "url": "https://github.com/SaahilClaypool/vscode-scratchpad"
+    },
     "displayName": "Scratchpad Markdown",
     "description": "a simple scratchpad for vscode (using markdown)",
-    "version": "0.0.3",
+    "version": "0.1.0",
     "publisher": "saahilclaypool",
     "engines": {
         "vscode": "^1.0.0"
@@ -52,9 +55,9 @@
     },
     "scripts": {
         "vscode:prepublish": "npm run compile",
-		"compile": "tsc -p ./",
-		"lint": "tslint -p ./",
-		"watch": "tsc -watch -p ./"
+        "compile": "tsc -p ./",
+        "lint": "tslint -p ./",
+        "watch": "tsc -watch -p ./"
     },
     "devDependencies": {
         "typescript": "^1.8.5",
