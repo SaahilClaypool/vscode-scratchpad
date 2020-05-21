@@ -25,6 +25,29 @@
                 "command": "extension.openLocalScratchpad",
                 "title": "Open Local Scratchpad"
             }
+        ],
+        "configuration": [
+            {
+                "title": "Scratchpad Custom Path",
+                "properties": {
+                    "scratchpad.customPath": {
+                        "type": "string",
+                        "scope": "window",
+                        "description": "Which file to open as global scratchpad"
+                    }
+                }
+            },
+            {
+                "title": "Scratchpad Append Date",
+                "properties": {
+                    "scratchpad.addDate": {
+                        "type": "boolean",
+                        "scope": "machine-overridable",
+                        "default": false,
+                        "description": "Should the datestring be added to the top of the file"
+                    }
+                }
+            }
         ]
     },
     "scripts": {

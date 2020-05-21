@@ -12,9 +12,14 @@ export function activate(context: vscode.ExtensionContext) {
 
     let globalCommand = vscode.commands.registerCommand('extension.openGlobalScratchpad', () => {
         fullPath = path.join(context.extensionPath, "../..", fileBase + '_global' + fileExtension);
-
-        openFile(fullPath); 
+        let customPath = vscode.workspace.getConfiguration().get('scratchpad.customPath') as string;
+        if (customPath == null || customPath.length == 0) {
+            customPath = fullPath;
+        }
+        console.log('custom path', customPath);
+        openFile(customPath); 
     });
+
     let localCommand = vscode.commands.registerCommand('extension.openLocalScratchpad', () => {
         const { rootPath } = vscode.workspace;
         fullPath = path.join(rootPath, ".vscode",  fileBase + '_local' + fileExtension);
@@ -31,6 +36,10 @@ export function openFile (fullPath: string) {
 
         vscode.workspace.openTextDocument(fullPath).then((doc) => {
             vscode.window.showTextDocument(doc).then(editor => {
+                const shouldDate = vscode.workspace.getConfiguration().get('scratchpad.addDate') as boolean;
+                if (!shouldDate) {
+                    return;
+                }
                 const length = doc.getText().length;
                 // const pos = editor.document.positionAt(length);
                 const pos = editor.document.positionAt(0);
